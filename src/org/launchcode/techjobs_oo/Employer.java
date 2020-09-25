@@ -2,9 +2,10 @@ package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
 
-public class Employer {
+public class Employer { //constructor 1
     private int id;
-    private static int nextId = 1;
+    private static int nextId = 1; //next id is variable that increments which in turn gives every new 'Employer'
+    // object gets a different id number
     private String value;
 
     public Employer() {
@@ -12,8 +13,8 @@ public class Employer {
         nextId++;
     }
 
-    public Employer(String value) {
-        this();
+    public Employer(String value) { //constructor 2
+        this(); //how does 'this()' statement do its magic???
         this.value = value;
     }
 

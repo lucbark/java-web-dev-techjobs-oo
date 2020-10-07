@@ -30,6 +30,13 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    public String toString(){
+
+        return "\n" + "Job info goes here" +'\n';
+
+
+
+    }
 
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields

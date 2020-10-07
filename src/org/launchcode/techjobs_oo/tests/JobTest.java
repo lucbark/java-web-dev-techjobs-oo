@@ -16,15 +16,20 @@ public class JobTest {
         assertEquals(emptyObject1.getId() + 1 ,emptyObject2.getId(),0);
 }
 
-@Test
+@Test //using instanceof keyword
     public void testJobConstructorSetsAllFields() {
-    Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
+    Job a = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
             new PositionType("Quality Control"), new CoreCompetency("Persistence"));
-    assertTrue(object instanceof Job);
+
+    assertTrue(a.getName() instanceof String);
+    assertTrue(a.getEmployer() instanceof Employer);
+    assertTrue(a.getLocation() instanceof Location);
+    assertTrue(a.getPositionType() instanceof PositionType);
+    assertTrue(a.getCoreCompetency() instanceof CoreCompetency);
 
 }
 
-@Test
+@Test //testing for equality
     public void testJobsforEquality() {
     Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
             new PositionType("Quality Control"), new CoreCompetency("Persistence"));
@@ -33,6 +38,18 @@ public class JobTest {
     assertFalse(object.equals(object2));
 }
 
+@Test //TDD Build The toString Method
+    public void testOnetoStringMethod(){
 
+    Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
+            new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+
+    String testOne = object.toString();
+
+    assertTrue(testOne.charAt(0) == '\n' ); //testing for blank line before the string
+    assertEquals(testOne.charAt(testOne.length()- 1), '\n'); // testing for blank line after the string
+}
+
+@Test //TDD
 }
 

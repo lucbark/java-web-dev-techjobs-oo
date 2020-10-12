@@ -1,6 +1,7 @@
 package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class Job {
 
@@ -12,6 +13,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -30,12 +32,57 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public String toString(){
+    public String toString() {
+        //Pass testBlankLineBeforeAndAfterToStringMethod()
+        //return "\n" + "Job info goes here" + '\n';
+        String emptyNameField = "Data not available.";
+        String emptyEmployerField = "Data not available.";
+        String emptyLocationField = "Data not available.";
+        String emptyPositionTypeField = "Data not available.";
+        String emptyCoreCompetency = "Data not available.";
+        String doesNotExist = "What you are looking for does not exist."; //BONUS
 
-        return "\n" + "Job info goes here" +'\n';
+        if(this.name != null){
+            emptyNameField = "Data not available.";
+        }
+
+        if(this.employer != null) { //checks to see if field is empty
+            emptyEmployerField = this.employer.getValue();
+        }
+
+        if(this.location != null) {
+            emptyLocationField = this.location.getValue();
+        }
+
+        if(this.positionType != null) {
+            emptyPositionTypeField = this.positionType.getValue();
+        }
+
+        if(this.coreCompetency != null) {
+            emptyCoreCompetency = this.coreCompetency.getValue();
+        }
+
+        if(this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
+            return doesNotExist;
+        } else {
+
+            return '\n' + "ID: " + this.id + '\n' +
+                    "Name: " + emptyNameField + '\n' +
+                    "Employer: " + emptyEmployerField + '\n' +
+                    "Location: " + emptyLocationField + '\n' +
+                    "Position Type: " + emptyPositionTypeField + '\n' +
+                    "Core Competency: " + emptyCoreCompetency + '\n';
+
+        }
 
 
 
+//        return '\n' + "ID: " + this.id + '\n' +
+//                "Name: " + emptyNameField + '\n' +
+//                "Employer: " + emptyEmployerField + '\n' +
+//                "Location: " + emptyLocationField + '\n' +
+//                "Position Type: " + emptyPositionTypeField + '\n' +
+//                "Core Competency: " + emptyCoreCompetency + '\n';
     }
 
 
@@ -103,4 +150,6 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+
 }

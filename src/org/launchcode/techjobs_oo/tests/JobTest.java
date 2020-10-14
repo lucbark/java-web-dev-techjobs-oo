@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
-
+import org.launchcode.techjobs_oo.Job;
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -37,8 +37,11 @@ public class JobTest {
     assertTrue(object.getLocation() instanceof Location);
     assertTrue(object.getPositionType() instanceof PositionType);
     assertTrue(object.getCoreCompetency() instanceof CoreCompetency);
-
-}
+    assertTrue(object.getEmployer().toString().equals("ACME"));
+    assertTrue(object.getLocation().toString().equals("Desert"));
+    assertTrue(object.getPositionType().toString().equals("Quality Control"));
+    assertTrue(object.getCoreCompetency().toString().equals("Persistence"));
+   }
 
 @Test //testing for equality
     public void testJobsforEquality() {

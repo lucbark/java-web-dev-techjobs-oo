@@ -26,6 +26,7 @@ public class Job {
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) { //constructor 2
         this();
+        this.name = name;
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
@@ -42,8 +43,8 @@ public class Job {
         String emptyCoreCompetency = "Data not available.";
         String doesNotExist = "What you are looking for does not exist."; //BONUS
 
-        if(this.name != null){
-            emptyNameField = "Data not available.";
+        if(this.name != ""){
+            emptyNameField = this.name;
         }
 
         if(this.employer != null) { //checks to see if field is empty
@@ -62,7 +63,7 @@ public class Job {
             emptyCoreCompetency = this.coreCompetency.getValue();
         }
 
-        if(this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
+        if(this.name == "" && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
             return doesNotExist;
         } else {
 

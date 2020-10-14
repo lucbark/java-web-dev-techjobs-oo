@@ -1,17 +1,23 @@
 package org.launchcode.techjobs_oo.tests;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
 import static org.junit.Assert.*;
 
 public class JobTest {
-    //constructor (below) is needed for most tests that follow
-    Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
-            new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+    private Job object;
     //variable (below) will be needed for tests that follow
-    String testOne = object.toString();
+    //String testOne = object.toString();
 
+
+    //constructor (below) is needed for most tests that follow
+   @Before
+    public void createObjectTest() {
+         object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+    }
 
 
 @Test
@@ -24,10 +30,9 @@ public class JobTest {
 
 @Test //using instanceof keyword
     public void testJobConstructorSetsAllFields() {
-    //Job a = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
-            //new PositionType("Quality Control"), new CoreCompetency("Persistence"));
 
-    assertTrue(object.getName() instanceof String);
+    //System.out.println(object);
+    assertEquals("Product Tester", object.getName());
     assertTrue(object.getEmployer() instanceof Employer);
     assertTrue(object.getLocation() instanceof Location);
     assertTrue(object.getPositionType() instanceof PositionType);
@@ -39,7 +44,7 @@ public class JobTest {
     public void testJobsforEquality() {
     //Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
             //new PositionType("Quality Control"), new CoreCompetency("Persistence"));
-    Job object2 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
+    Job object2 = new Job("Data Tester", new Employer("ACME"), new Location("Desert"),
             new PositionType("Quality Control"), new CoreCompetency("Persistence"));
     assertFalse(object.equals(object2));
 }
@@ -50,7 +55,7 @@ public class JobTest {
     //Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
             //new PositionType("Quality Control"), new CoreCompetency("Persistence")); //constructor for test
 
-    //String testOne = object.toString();
+    String testOne = object.toString();
 
     assertTrue(testOne.charAt(0) == '\n' ); //testing for blank line before the string
     assertEquals(testOne.charAt(testOne.length()- 1), '\n'); // testing for blank line after the string
@@ -62,7 +67,7 @@ public class JobTest {
     //Job object = new Job("Product Tester", new Employer("ACME"), new Location("Desert"),
             //new PositionType("Quality Control"), new CoreCompetency("Persistence")); //constructor for test
 
-    //String testOne = object.toString();
+    String testOne = object.toString();
     assertTrue(object.toString().contains('\n' + "ID: " + object.getId() + '\n'));
 
 
@@ -72,7 +77,10 @@ public class JobTest {
 
 @Test //2.2
     public void testNameLabelToStringMethod(){
-    assertTrue(object.toString().contains("Name: " + object.getName() + '\n'));
+    //System.out.println(object.toString());
+    //assertEquals( "Name: Product Tester",object.toString());
+    assertTrue(object.toString().contains("Name: " + object.getName()));
+
 }
 
 @Test //2.3
@@ -106,7 +114,7 @@ public class JobTest {
 
 @Test //4 Bonus
     public void testIfAllFieldsAreEmpty() {
-    Job nullObject2 = new Job(null , null , null ,
+    Job nullObject2 = new Job("" , null , null ,
             null , null);
 
     assertTrue(nullObject2.toString().contains("What you are looking for does not exist."));
